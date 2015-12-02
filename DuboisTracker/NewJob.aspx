@@ -17,6 +17,11 @@
         <asp:TextBox ID="tb_lastName" runat="server"></asp:TextBox>
         <br />
         <br />
+        <asp:Label ID ="lbl_Materials" runat="server" Text ="Materials" AssociatedControlID="tb_Materials"></asp:Label>
+        <br />
+        <asp:TextBox ID="tb_Materials" runat="server"></asp:TextBox>
+        <br />
+        <br />
         <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="btnSubmit_Clicked" />
         <br />
         <br />
@@ -24,8 +29,9 @@
 
     <asp:GridView ID="DataGridView1" runat="server" DataSourceID="JobInfo" AutoGenerateColumns="False" Visible="False">
         <Columns>
-            <asp:BoundField DataField="firstName" HeaderText="firstName" SortExpression="firstName" />
-            <asp:BoundField DataField="lastName" HeaderText="lastName" SortExpression="lastName" />
+            <asp:BoundField DataField="firstName" HeaderText="First Name" SortExpression="firstName" />
+            <asp:BoundField DataField="lastName" HeaderText="Last Name" SortExpression="lastName" />
+            <asp:BoundField DataField ="Materials" HeaderText ="Materials Needed" SortExpression ="Material" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="JobInfo" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM jobinfo"></asp:SqlDataSource>

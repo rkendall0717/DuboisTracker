@@ -50,9 +50,10 @@ namespace DuboisTracker
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "INSERT INTO JobInfo(firstName, lastName)VALUES(@firstName,@lastName)";
+                cmd.CommandText = "INSERT INTO JobInfo(firstName, lastName, materials)VALUES(@firstName,@lastName,@materials)";
                 cmd.Parameters.AddWithValue("@firstName", tb_firstName.Text);
                 cmd.Parameters.AddWithValue("@lastName", tb_lastName.Text);
+                cmd.Parameters.AddWithValue("@materials", tb_Materials.Text);
                 cmd.ExecuteNonQuery();
             }
             catch(Exception)

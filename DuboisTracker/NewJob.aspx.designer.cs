@@ -67,6 +67,24 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.TextBox tb_lastName;
         
         /// <summary>
+        /// lbl_Materials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Materials;
+        
+        /// <summary>
+        /// tb_Materials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_Materials;
+        
+        /// <summary>
         /// btn_submit control.
         /// </summary>
         /// <remarks>
