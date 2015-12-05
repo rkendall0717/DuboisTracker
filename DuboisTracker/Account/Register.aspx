@@ -12,19 +12,19 @@
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="row">
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-xs-2 col-sm-2 col-md-2 control-label">Email</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-xs-2 col-sm-2 col-md-2">Email</asp:Label>
                 <div class="col-xs-10 col-sm-10 col-md-10">
                     <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                         CssClass="text-danger" ErrorMessage="The email field is required." />
                 </div>
-                <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-xs-2 col-sm-2 col-md-2 control-label">Password</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-xs-2 col-sm-2 col-md-2">Password</asp:Label>
                 <div class="col-xs-10 col-sm-10 col-md-10">
                     <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                         CssClass="text-danger" ErrorMessage="The password field is required." />
                 </div>
-                <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-xs-4 col-sm-4 col-md-4 control-label">Confirm password</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-xs-4 col-sm-4 col-md-4">Confirm password</asp:Label>
                 <div class="col-xs-10 col-sm-10 col-md-10">
                     <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
