@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace DuboisTracker
 {
@@ -51,6 +52,44 @@ namespace DuboisTracker
                 {
                     throw;
                 }
+            }
+        }
+
+        protected void submitQuery(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                string MyCommandText = "SELECT firstname, lastname, jobtitle, jobdetails, materials, jobcomplete FROM JobInfo WHERE address = ";
+
+                if (moldProDropDownList.Visible == true)
+                {
+                    MyCommandText += "'" + moldProDropDownList.Text + "'";
+                }
+                else if (otrDropDownList.Visible == true)
+                {
+                    MyCommandText += "'" + otrDropDownList.Text + "'";
+                }
+                else if (othsDropDownList.Visible == true)
+                {
+                    MyCommandText += "'" + othsDropDownList.Text + "'";
+                }
+
+                cmd.CommandText = MyCommandText;
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet theData = new DataSet();
+                adapter.Fill(theData);
+                DataGridView1.DataSource = theData;
+                DataGridView1.DataBind();
+                DataGridView1.Visible = true;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
