@@ -13,15 +13,6 @@ namespace DuboisTracker {
     public partial class NewJob {
         
         /// <summary>
-        /// LLCSelection control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image LLCSelection;
-        
-        /// <summary>
         /// panel_infoForm control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,24 @@ namespace DuboisTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panel_infoForm;
+        
+        /// <summary>
+        /// lbl_Company control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Company;
+        
+        /// <summary>
+        /// tb_company control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_company;
         
         /// <summary>
         /// lbl_firstName control.
@@ -40,15 +49,6 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_firstName;
         
         /// <summary>
-        /// tb_firstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_firstName;
-        
-        /// <summary>
         /// lbl_lastName control.
         /// </summary>
         /// <remarks>
@@ -58,6 +58,15 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_lastName;
         
         /// <summary>
+        /// tb_firstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_firstName;
+        
+        /// <summary>
         /// tb_lastName control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,96 @@ namespace DuboisTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_lastName;
+        
+        /// <summary>
+        /// lbl_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_address;
+        
+        /// <summary>
+        /// lbl_city control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_city;
+        
+        /// <summary>
+        /// tb_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_address;
+        
+        /// <summary>
+        /// tb_city control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_city;
+        
+        /// <summary>
+        /// lbl_state control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_state;
+        
+        /// <summary>
+        /// tb_state control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_state;
+        
+        /// <summary>
+        /// lbl_jobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_jobTitle;
+        
+        /// <summary>
+        /// tb_jobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_jobTitle;
+        
+        /// <summary>
+        /// lbl_jobDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_jobDetails;
+        
+        /// <summary>
+        /// tb_jobDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_jobDetails;
         
         /// <summary>
         /// lbl_Materials control.
