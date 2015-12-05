@@ -31,28 +31,33 @@ namespace DuboisTracker
 
         protected void btnSubmit_Clicked(object sender, EventArgs e)
         {
+            
             string strSQLconnection = "Data Source=SQL5007.Smarterasp.net;Initial Catalog=DB_9E00E3_rkendall0717;User Id=DB_9E00E3_rkendall0717_admin;Password=Password1.;";
             SqlConnection sqlConnection = new SqlConnection(strSQLconnection);
-            SqlCommand sqlCommand = new SqlCommand("select Email from AspNetUsers", sqlConnection);
+            
 
             if (tb_password.Text == "Password1.")
             {
-                lbl_password.Visible = false;
-                tb_password.Visible = false;
-                btn_submit.Visible = false;
-
-                if (GridView1 != null)
+                if (ddl_task.SelectedValue == "View Users")
                 {
-                    GridView1.Visible = true;
-                    sqlConnection.Open();
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    GridView1.DataSource = reader;
-                    GridView1.DataBind();
+                    SqlCommand sqlCommand = new SqlCommand("select Email from AspNetUsers", sqlConnection);
+                    lbl_password.Visible = false;
+                    tb_password.Visible = false;
+                    //btn_submit.Visible = false;
+
+                    if (GridView1 != null)
+                    {
+                        GridView1.Visible = true;
+                        sqlConnection.Open();
+                        SqlDataReader reader = sqlCommand.ExecuteReader();
+                        GridView1.DataSource = reader;
+                        GridView1.DataBind();
+                    }
                 }
-            }
-            else
-            {
-                GridView1.Visible = false;
+                else
+                {
+                    GridView1.Visible = false;
+                }
             }
             sqlConnection.Close();
         }

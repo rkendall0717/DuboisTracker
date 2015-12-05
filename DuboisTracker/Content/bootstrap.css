@@ -162,7 +162,7 @@ button,
 input,
 select,
 textarea {
-  margin: 0;
+  margin: 0 0 0 0px;
   font-family: inherit;
   font-size: 100%;
 }
@@ -1655,6 +1655,7 @@ label {
   display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
+    margin-left: 8px;
 }
 
 input[type="search"] {
