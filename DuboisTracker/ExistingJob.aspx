@@ -1,24 +1,22 @@
 ﻿<%@ Page Title="Info" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ExistingJob.aspx.cs" Inherits="DuboisTracker.ExistingJob" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Please enter your information.</h3>
+    <h3>Existing Jobs</h3>
     <asp:Image ID="LLCSelection" runat="server" Height="300px" Width="300px" />
     <br />
+    <asp:Label ID="Label1" runat="server" Text="Select a Location"></asp:Label>
+    <br />
+    <asp:DropDownList ID="moldProDropDownList" runat="server" DataSourceID="moldProLocations" Visible="false" DataTextField="address" DataValueField="address">
+    </asp:DropDownList>
+    <asp:DropDownList ID="otrDropDownList" runat="server" DataSourceID="otrLocations" Visible="false" DataTextField="address" DataValueField="address">
+    </asp:DropDownList>
+    <asp:DropDownList ID="othsDropDownList" runat="server" DataSourceID="othsLocations" Visible="false" DataTextField="address" DataValueField="address">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="moldProLocations" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT address FROM jobinfo WHERE companyname = 'moldPro'"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="otrLocations" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT DISTINCT address FROM JobInfo WHERE companyname = 'OTR'"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="othsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT DISTINCT address FROM JobInfo WHERE companyname = 'OTHS'"></asp:SqlDataSource>
+    <asp:Button ID="Button1" runat="server" Text="Submit" />
+    <br />
+    
 
-    <div class="form-group">
-        <asp:Label runat="server" AssociatedControlID="tb_firstName" CssClass="active left">First Name</asp:Label>
-        <div>
-            <asp:TextBox runat="server" ID="tb_firstName" TextMode="SingleLine" CssClass="form-control" />
-            <asp:RequiredFieldValidator
-                ID="Value1RequiredValidatorFirst" ControlToValidate="tb_firstName" ErrorMessage="Please enter a comment.<br />"
-                Display="Dynamic" runat="server" />
-        </div>
-        <asp:Label runat="server" AssociatedControlID="tb_lastName" CssClass="active left">Last Name</asp:Label>
-        <div>
-            <asp:TextBox runat="server" ID="tb_lastName" TextMode="SingleLine" CssClass="form-control" />
-            <asp:RequiredFieldValidator
-                ID="RequiredFieldValidatorLast" ControlToValidate="tb_lastName" ErrorMessage="Please enter a comment.<br />"
-                Display="Dynamic" runat="server" />
-        </div>
-    </div>
-</asp:Content>
+    </asp:Content>

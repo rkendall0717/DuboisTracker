@@ -22,39 +22,84 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Image LLCSelection;
         
         /// <summary>
-        /// tb_firstName control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_firstName;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Value1RequiredValidatorFirst control.
+        /// moldProDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Value1RequiredValidatorFirst;
+        protected global::System.Web.UI.WebControls.DropDownList moldProDropDownList;
         
         /// <summary>
-        /// tb_lastName control.
+        /// otrDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_lastName;
+        protected global::System.Web.UI.WebControls.DropDownList otrDropDownList;
         
         /// <summary>
-        /// RequiredFieldValidatorLast control.
+        /// othsDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorLast;
+        protected global::System.Web.UI.WebControls.DropDownList othsDropDownList;
+        
+        /// <summary>
+        /// moldProLocations control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource moldProLocations;
+        
+        /// <summary>
+        /// otrLocations control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource otrLocations;
+        
+        /// <summary>
+        /// othsLocations control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource othsLocations;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// DataGridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView DataGridView1;
     }
 }
