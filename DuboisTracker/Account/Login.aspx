@@ -23,30 +23,22 @@
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                                 CssClass="text-danger" ErrorMessage="The email field is required." />
                         </div>
-                    </div>
-                    <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-xs-2 col-sm-2 col-md-2 control-label">Password</asp:Label>
                         <div class="col-xs-10 col-sm-10 col-md-10">
                             <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />
                         </div>
-                    </div>
-                    <div class="form-group">
                         <div class="col-xs-10 col-sm-10 col-md-10">
                             <div class="checkbox">
                                 <asp:CheckBox runat="server" ID="RememberMe" />
                                 <asp:Label runat="server" AssociatedControlID="RememberMe">Remember me?</asp:Label>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary" />
                         </div>
-                    </div>
-                    <div class="form-group">
                         <div class="col-xs-10 col-sm-10 col-md-10">
-                            <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
+                            <asp:HyperLink class="btn btn-link" runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
                         </div>
                     </div>
                 </div>
