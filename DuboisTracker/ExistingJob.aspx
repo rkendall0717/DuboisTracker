@@ -27,12 +27,12 @@
             <asp:BoundField DataField="jobDetails" HeaderText="Job Details" SortExpression="jobDetails" />
             <asp:BoundField DataField="materials" HeaderText="Materials Needed" SortExpression="materials" />
             <asp:BoundField DataField="jobComplete" HeaderText="JobComplete" SortExpression="jobComplete" />
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Job Controls">
                 <ItemTemplate>
                     <asp:Button ID="editButton" runat="server" Text="Edit" OnClick="editJobDetails"/>
-                    <asp:Button ID="clockInButton" runat="server" Text="Clock In" />
-                    <asp:Button ID="clockOutButton" runat="server" Text="Clock Out" />
-                    <asp:Button ID="jobCloseButton" runat="server" Text="Close Job" />
+                    <asp:Button ID="clockInButton" runat="server" Text="Clock In" OnClick="clockInJob" />
+                    <asp:Button ID="clockOutButton" runat="server" Text="Clock Out" OnClick="clockOutJob"/>
+                    <asp:Button ID="jobCloseButton" runat="server" Text="Close Job" OnClick="closeJob"/>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

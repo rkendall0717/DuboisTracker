@@ -90,6 +90,14 @@ namespace DuboisTracker
                 MySqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = "SELECT * FROM JobInfo";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+
+                foreach(GridViewRow theRows in DataGridView1.Rows)
+                {
+                    if (theRows.Cells[10].Text == "0")
+                        theRows.Cells[10].Text = "Open";
+                    else
+                        theRows.Cells[10].Text = "Closed";
+                }
             }
             catch (Exception)
             {

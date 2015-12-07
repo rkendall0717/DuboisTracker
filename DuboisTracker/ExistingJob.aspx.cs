@@ -93,6 +93,27 @@ namespace DuboisTracker
                 DataGridView1.DataSource = theData;
                 DataGridView1.DataBind();
                 DataGridView1.Visible = true;
+                foreach(GridViewRow theRows in DataGridView1.Rows)
+                {
+                    Button jobClose = (Button)theRows.FindControl("jobCloseButton");
+                    Button editJob = (Button)theRows.FindControl("editButton");
+                    Button clockIn = (Button)theRows.FindControl("clockInButton");
+                    Button clockOut = (Button)theRows.FindControl("clockOutButton");
+                    if (theRows.Cells[6].Text == "0")
+                    { //Job is open
+                        theRows.Cells[6].Text = "Open";
+                        jobClose.Visible = true;
+                        editJob.Visible = true;
+                    }
+                    else
+                    { //Job is closed
+                        theRows.Cells[6].Text = "Closed";
+                        jobClose.Visible = false;
+                        editJob.Visible = false;
+                        clockIn.Visible = false;
+                        clockOut.Visible = false;
+                    }
+                }
             }
             catch (Exception)
             {
@@ -169,6 +190,49 @@ namespace DuboisTracker
                 cmd.Parameters.AddWithValue("@jobTitle", tb_jobTitle.Text);
                 cmd.Parameters.AddWithValue("@jobDetails", tb_jobDetails.Text);
                 cmd.Parameters.AddWithValue("@materials", tb_Materials.Text);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        protected void clockInJob(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void clockOutJob(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void closeJob(object sender, EventArgs e)
+        {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
+
+            //Get row we want to edit
+            GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
+            string jobId = theRow.Cells[0].Text;
+
+            DataGridView1.Visible = false;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "UPDATE JobInfo SET jobComplete = @jobComplete WHERE jobId = @jobId";
+                cmd.Parameters.AddWithValue("@jobId", jobId);
+                cmd.Parameters.AddWithValue("@jobComplete", 1);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
