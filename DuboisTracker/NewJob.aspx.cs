@@ -43,33 +43,34 @@ namespace DuboisTracker
         {
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             MySqlCommand cmd;
-         
-            panel_infoForm.Controls.Clear();           
-            
+
+            panel_infoForm.Controls.Clear();
+
             try
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "INSERT INTO JobInfo(companyName,firstName,lastName,address,city,state,jobTitle,jobDetails,materials, jobComplete)VALUES(@company,@firstName,@lastName,@address,@city,@state,@jobTitle,@jobDetails,@materials,@jobComplete)";
+                cmd.CommandText = "INSERT INTO JobInfo(companyName,firstName,lastName,address,city,state,location,jobTitle,jobDetails,materials, jobComplete)VALUES(@company,@firstName,@lastName,@address,@city,@state,@location,@jobTitle,@jobDetails,@materials,@jobComplete)";
                 cmd.Parameters.AddWithValue("@company", tb_company.Text);
                 cmd.Parameters.AddWithValue("@firstName", tb_firstName.Text);
                 cmd.Parameters.AddWithValue("@lastName", tb_lastName.Text);
                 cmd.Parameters.AddWithValue("@address", tb_address.Text);
                 cmd.Parameters.AddWithValue("@city", tb_city.Text);
                 cmd.Parameters.AddWithValue("@state", tb_state.Text);
+                cmd.Parameters.AddWithValue("@location", tb_location.Text);
                 cmd.Parameters.AddWithValue("@jobTitle", tb_jobTitle.Text);
                 cmd.Parameters.AddWithValue("@jobDetails", tb_jobDetails.Text);
                 cmd.Parameters.AddWithValue("@materials", tb_Materials.Text);
                 cmd.Parameters.AddWithValue("@jobComplete", 0);
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
             finally
             {
-                if(connection.State == ConnectionState.Open)
+                if (connection.State == ConnectionState.Open)
                 {
                     connection.Close();
                     LoadData();
@@ -83,7 +84,7 @@ namespace DuboisTracker
         {
             DataGridView1.Visible = true;
             MySqlConnection connection = new MySqlConnection(myConnectionString);
-          
+
             try
             {
                 connection.Open();
@@ -91,7 +92,7 @@ namespace DuboisTracker
                 cmd.CommandText = "SELECT * FROM JobInfo";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
-                foreach(GridViewRow theRows in DataGridView1.Rows)
+                foreach (GridViewRow theRows in DataGridView1.Rows)
                 {
                     if (theRows.Cells[10].Text == "0")
                         theRows.Cells[10].Text = "Open";
