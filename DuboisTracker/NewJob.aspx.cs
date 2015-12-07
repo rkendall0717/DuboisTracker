@@ -42,21 +42,22 @@ namespace DuboisTracker
         protected void btnSubmit_Clicked(object sender, EventArgs e)
         {
             MySqlConnection connection = new MySqlConnection(myConnectionString);
-            MySqlCommand cmd;
-         
+            MySqlCommand cmd;          
+
             panel_infoForm.Controls.Clear();           
             
             try
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "INSERT INTO JobInfo(companyName,firstName,lastName,address,city,state,jobTitle,jobDetails,materials, jobComplete)VALUES(@company,@firstName,@lastName,@address,@city,@state,@jobTitle,@jobDetails,@materials,@jobComplete)";
+                cmd.CommandText = "INSERT INTO JobInfo(companyName,firstName,lastName,address,city,state,location,jobTitle,jobDetails,materials, jobComplete)VALUES(@company,@firstName,@lastName,@address,@city,@state,@location,@jobTitle,@jobDetails,@materials,@jobComplete)";
                 cmd.Parameters.AddWithValue("@company", tb_company.Text);
                 cmd.Parameters.AddWithValue("@firstName", tb_firstName.Text);
                 cmd.Parameters.AddWithValue("@lastName", tb_lastName.Text);
                 cmd.Parameters.AddWithValue("@address", tb_address.Text);
                 cmd.Parameters.AddWithValue("@city", tb_city.Text);
                 cmd.Parameters.AddWithValue("@state", tb_state.Text);
+                cmd.Parameters.AddWithValue("@location", tb_location.Text);
                 cmd.Parameters.AddWithValue("@jobTitle", tb_jobTitle.Text);
                 cmd.Parameters.AddWithValue("@jobDetails", tb_jobDetails.Text);
                 cmd.Parameters.AddWithValue("@materials", tb_Materials.Text);
