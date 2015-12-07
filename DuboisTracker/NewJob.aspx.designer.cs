@@ -85,15 +85,6 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_address;
         
         /// <summary>
-        /// lbl_city control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_city;
-        
-        /// <summary>
         /// tb_address control.
         /// </summary>
         /// <remarks>
@@ -103,13 +94,13 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.TextBox tb_address;
         
         /// <summary>
-        /// tb_city control.
+        /// lbl_city control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_city;
+        protected global::System.Web.UI.WebControls.Label lbl_city;
         
         /// <summary>
         /// lbl_state control.
@@ -121,6 +112,15 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_state;
         
         /// <summary>
+        /// tb_city control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_city;
+        
+        /// <summary>
         /// tb_state control.
         /// </summary>
         /// <remarks>
@@ -128,6 +128,24 @@ namespace DuboisTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_state;
+        
+        /// <summary>
+        /// lbl_location control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_location;
+        
+        /// <summary>
+        /// tb_location control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_location;
         
         /// <summary>
         /// lbl_jobTitle control.
