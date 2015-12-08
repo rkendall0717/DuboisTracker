@@ -14,12 +14,17 @@ namespace DuboisTracker
     {
         public static String myConnectionString = "Server=MYSQL5013.Smarterasp.net;Database=db_9e00e3_info;Uid=9e00e3_info;Pwd=Password1.;";
         public static Label lbl_confirmation = new Label();
+        public static HyperLink reload = new HyperLink();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             // set up confirmation label
             lbl_confirmation.Text = "Job has been successfully submitted. <br/> <br/>";
             lbl_confirmation.Font.Size = 30;
+
+            // set up reload hyperlink
+            reload.Text = "Return to Home";
+            reload.NavigateUrl = "~/Default.aspx";
 
             // method that sets up page according to previously selected LLC
             if (Request.QueryString["Name"] != null)
@@ -72,46 +77,11 @@ namespace DuboisTracker
             {
                 if (connection.State == ConnectionState.Open)
                 {
-                    connection.Close();
-                    LoadData();
+                    connection.Close();                    
                 }
             }
-
             panel_infoForm.Controls.Add(lbl_confirmation);
-        }
-
-        protected void LoadData()
-        {
-            DataGridView1.Visible = true;
-            MySqlConnection connection = new MySqlConnection(myConnectionString);
-
-            try
-            {
-                connection.Open();
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT * FROM JobInfo";
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-
-                foreach (GridViewRow theRows in DataGridView1.Rows)
-                {
-                    if (theRows.Cells[10].Text == "0")
-                        theRows.Cells[10].Text = "Open";
-                    else
-                        theRows.Cells[10].Text = "Closed";
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                if (connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
-
-        }
+            panel_infoForm.Controls.Add(reload);
+        }        
     }
 }

@@ -74,8 +74,8 @@
         }
 
         function showPosition(position) {
-            x.value = "Latitude: " + position.coords.latitude + "\n" +
-            "Longitude: " + position.coords.longitude;
+            x.value = position.coords.latitude + "\n" +
+            position.coords.longitude;
         }
 
         function showError(error) {
@@ -95,24 +95,6 @@
             }
         }
     </script>
-
-    <asp:GridView ID="DataGridView1" runat="server" DataSourceID="JobInfo" AutoGenerateColumns="False" Visible="False">
-        <Columns>
-            <asp:BoundField DataField="companyName" HeaderText="Company Name" SortExpression="CompanyName" />
-            <asp:BoundField DataField="firstName" HeaderText="First Name" SortExpression="firstName" />
-            <asp:BoundField DataField="lastName" HeaderText="Last Name" SortExpression="lastName" />
-            <asp:BoundField DataField="address" HeaderText="Address" SortExpression="address" />
-            <asp:BoundField DataField="city" HeaderText="City" SortExpression="city" />
-            <asp:BoundField DataField="state" HeaderText="State" SortExpression="state" />
-            <asp:BoundField DataField="location" HeaderText="Location" SortExpression="location" />
-            <asp:BoundField DataField="jobTitle" HeaderText="Job Title" SortExpression="jobTitle" />
-            <asp:BoundField DataField="jobDetails" HeaderText="Job Details" SortExpression="jobDetails" />
-            <asp:BoundField DataField="materials" HeaderText="Materials Needed" SortExpression="materials" />
-            <asp:BoundField DataField="jobComplete" HeaderText="JobComplete" SortExpression="jobComplete" />
-        </Columns>
-    </asp:GridView>
-
-    <asp:SqlDataSource ID="JobInfo" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM jobinfo"></asp:SqlDataSource>
 </asp:Content>
 
 
