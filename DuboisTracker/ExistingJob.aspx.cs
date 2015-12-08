@@ -104,6 +104,8 @@ namespace DuboisTracker
                         theRows.Cells[6].Text = "Open";
                         jobClose.Visible = true;
                         editJob.Visible = true;
+                        clockIn.Visible = true;
+                        clockOut.Visible = true;
                     }
                     else
                     { //Job is closed
@@ -207,12 +209,70 @@ namespace DuboisTracker
 
         protected void clockInJob(object sender, EventArgs e)
         {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
 
+            //Get row we want to edit
+            GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
+            string jobId = theRow.Cells[0].Text;
+
+            DataGridView1.Visible = false;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "INSERT INTO timecard(jobId,timeType,timeValue)VALUES(@jobId,@timeType,@timeValue)";
+                cmd.Parameters.AddWithValue("@jobId", jobId);
+                cmd.Parameters.AddWithValue("@timeType", 0);//Clock In is 0
+                cmd.Parameters.AddWithValue("@timeValue", DateTime.Now);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         protected void clockOutJob(object sender, EventArgs e)
         {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
 
+            //Get row we want to edit
+            GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
+            string jobId = theRow.Cells[0].Text;
+
+            DataGridView1.Visible = false;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "INSERT INTO timecard(jobId,timeType,timeValue)VALUES(@jobId,@timeType,@timeValue)";
+                cmd.Parameters.AddWithValue("@jobId", jobId);
+                cmd.Parameters.AddWithValue("@timeType", 1);//Clock Out is 1
+                cmd.Parameters.AddWithValue("@timeValue", DateTime.Now);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         protected void closeJob(object sender, EventArgs e)
