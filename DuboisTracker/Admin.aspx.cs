@@ -14,28 +14,25 @@ namespace DuboisTracker
 {
     public partial class Admin : Page
     {
-        public static GridView DataGridView1;
+        public static Panel panel_passwordSubmit;
+        public static Panel panel_ddlTask;
+        public static Panel panel_viewUpdateUsers;
+        public static GridView dgv_jobInfo;
         public static GridView GridView1;
-        public static Label lbl_password;
-        public static Label lbl_deleteUser;
         public static TextBox tb_password;
         public static DropDownList ddl_userToDelete;
-        public static Button btn_submit;
-        public static Button btn_submitView;
-        public static Button btn_deleteUser;
         public static DropDownList ddl_task;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataGridView1 = (GridView)LoginView1.FindControl("DataGridView1");
+            panel_passwordSubmit = (Panel)LoginView1.FindControl("panel_passwordSubmit");
+            panel_ddlTask = (Panel)LoginView1.FindControl("panel_ddlTask");
+            panel_viewUpdateUsers = (Panel)LoginView1.FindControl("panel_viewUpdateUsers");
+            dgv_jobInfo = (GridView)LoginView1.FindControl("dgv_jobInfo");
             GridView1 = (GridView)LoginView1.FindControl("GridView1");
-            lbl_password = (Label)LoginView1.FindControl("lbl_password");
-            lbl_deleteUser = (Label)LoginView1.FindControl("lbl_deleteUser");
             tb_password = (TextBox)LoginView1.FindControl("tb_password");
             ddl_userToDelete = (DropDownList)LoginView1.FindControl("ddl_userToDelete");
-            btn_deleteUser = (Button)LoginView1.FindControl("btn_deleteUser");
-            btn_submit = (Button)LoginView1.FindControl("btn_submit");
-            btn_submitView = (Button)LoginView1.FindControl("btn_submitView");
             ddl_task = (DropDownList)LoginView1.FindControl("ddl_task");
         }
 
@@ -43,35 +40,27 @@ namespace DuboisTracker
         {
             if (tb_password.Text == "Password1.")
             {
-                lbl_password.Visible = false;
-                tb_password.Visible = false;
-                btn_submit.Visible = false;
-
-                ddl_task.Visible = true;
-                btn_submitView.Visible = true;
+                panel_passwordSubmit.Attributes.Add("style", "display:none");
+                panel_ddlTask.Attributes.Add("style", "display:block");
             }
         }
 
         protected void btnSubmitView_Clicked(object sender, EventArgs e)
-        {         
+        {
             if (ddl_task.SelectedValue == "View/Update Users")
             {
                 // toggle information views
-                DataGridView1.Visible = false;
-                lbl_deleteUser.Visible = true;
-                ddl_userToDelete.Visible = true;
-                btn_deleteUser.Visible = true;
+                dgv_jobInfo.Visible = false;
+                panel_viewUpdateUsers.Attributes.Add("style", "display:block");
 
                 ViewUpdateUsers();
             }
             else if (ddl_task.SelectedValue == "View Jobs")
             {
-                GridView1.Visible = false;
-                lbl_deleteUser.Visible = false;
-                ddl_userToDelete.Visible = false;
-                btn_deleteUser.Visible = false;
+                panel_viewUpdateUsers.Attributes.Add("style", "display:none");
+
                 LoadData();
-            }            
+            }
         }
 
         protected void ViewUpdateUsers()
@@ -87,7 +76,6 @@ namespace DuboisTracker
 
             if (GridView1 != null)
             {
-                GridView1.Visible = true;
                 sqlConnection.Open();
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 GridView1.DataSource = reader;
@@ -100,7 +88,7 @@ namespace DuboisTracker
         {
             String myConnectionString = "Server=MYSQL5013.Smarterasp.net;Database=db_9e00e3_info;Uid=9e00e3_info;Pwd=Password1.;";
 
-            DataGridView1.Visible = true;
+            dgv_jobInfo.Visible = true;
             MySqlConnection connection = new MySqlConnection(myConnectionString);
 
             try
@@ -110,7 +98,7 @@ namespace DuboisTracker
                 cmd.CommandText = "SELECT * FROM JobInfo";
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
-                foreach (GridViewRow theRows in DataGridView1.Rows)
+                foreach (GridViewRow theRows in dgv_jobInfo.Rows)
                 {
                     if (theRows.Cells[10].Text == "0")
                         theRows.Cells[10].Text = "Open";
@@ -135,7 +123,7 @@ namespace DuboisTracker
         {
             string strSQLconnection = "Data Source=SQL5007.Smarterasp.net;Initial Catalog=DB_9E00E3_rkendall0717;User Id=DB_9E00E3_rkendall0717_admin;Password=Password1.;";
             SqlConnection sqlConnection = new SqlConnection(strSQLconnection);
-            SqlCommand cmd = new SqlCommand();            
+            SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "DELETE FROM AspNetUsers WHERE email= '" + ddl_userToDelete.SelectedValue + "'";
             cmd.Connection = sqlConnection;
             sqlConnection.Open();

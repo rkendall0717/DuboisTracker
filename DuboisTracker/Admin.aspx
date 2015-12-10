@@ -7,34 +7,43 @@
             <br />
 
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="tb_password" CssClass="active left" ID="lbl_password">Password</asp:Label>
-                <div>
-                    <asp:TextBox runat="server" ID="tb_password" TextMode="Password" CssClass="form-control" />
-                </div>
-                <br>
-                <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="btnSubmit_Clicked" />
-                <br />
-                <br />
-                <asp:DropDownList ID="ddl_task" runat="server" Visible="False">
-                    <asp:ListItem>View/Update Users</asp:ListItem>
-                    <asp:ListItem>View Jobs</asp:ListItem>
-                </asp:DropDownList>
-                <br />
-                <br />
-                <asp:Button ID="btn_submitView" runat="server" Text="Submit View" OnClick="btnSubmitView_Clicked" Visible="False" />
-                <br />
-                <br />
-                <asp:GridView ID="GridView1" runat="server" Visible="False" Caption="The Following Users Are Registered"></asp:GridView>
-                <br />
-                <asp:Label ID="lbl_deleteUser" runat="server" Text="Delete a User? Enter in a User Name to Delete:" AssociatedControlID="ddl_userToDelete" Visible="False"></asp:Label>
-                <br />
-                <asp:DropDownList ID="ddl_userToDelete" runat="server" Visible="false">
-                </asp:DropDownList>
-                &nbsp;&nbsp;
-                <asp:Button ID="btn_deleteUser" runat="server" Text="Delete User" OnClick="DeleteUser" Visible="false" />
-                <br />
-                <br />
-                <asp:GridView ID="DataGridView1" runat="server" DataSourceID="JobInfo" AutoGenerateColumns="False" Visible="False">
+                <asp:Panel ID="panel_passwordSubmit" runat="server">
+                    <asp:Label runat="server" AssociatedControlID="tb_password" CssClass="active left" ID="lbl_password" ViewStateMode="Inherit">Password</asp:Label>
+                    <div>
+                        <asp:TextBox runat="server" ID="tb_password" TextMode="Password" CssClass="form-control" />
+                    </div>
+                    <br>
+                    <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="btnSubmit_Clicked" />
+                    <br />
+                    <br />
+                </asp:Panel>
+
+                <asp:Panel ID="panel_ddlTask" runat="server" Style="display: none">
+                    <asp:DropDownList ID="ddl_task" runat="server">
+                        <asp:ListItem>View/Update Users</asp:ListItem>
+                        <asp:ListItem>View Jobs</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <br />
+                    <asp:Button ID="btn_submitView" runat="server" Text="Submit View" OnClick="btnSubmitView_Clicked" />
+                    <br />
+                    <br />
+
+                </asp:Panel>
+                <asp:Panel ID="panel_viewUpdateUsers" runat="server" Style="display: none">
+                    <asp:GridView ID="GridView1" runat="server" Caption="The Following Users Are Registered"></asp:GridView>
+                    <br />
+                    <asp:Label ID="lbl_deleteUser" runat="server" Text="Delete a User? Enter in a User Name to Delete:" AssociatedControlID="ddl_userToDelete"></asp:Label>
+                    <br />
+                    <asp:DropDownList ID="ddl_userToDelete" runat="server">
+                    </asp:DropDownList>
+                    &nbsp;&nbsp;
+                <asp:Button ID="btn_deleteUser" runat="server" Text="Delete User" OnClick="DeleteUser" />
+                    <br />
+                    <br />
+                </asp:Panel>
+
+                <asp:GridView ID="dgv_jobInfo" runat="server" DataSourceID="JobInfo" AutoGenerateColumns="False" Visible="False">
                     <Columns>
                         <asp:BoundField DataField="companyName" HeaderText="Company Name" SortExpression="CompanyName" />
                         <asp:BoundField DataField="firstName" HeaderText="First Name" SortExpression="firstName" />
@@ -56,10 +65,12 @@
         <AnonymousTemplate>
             <br />
             <p>
-                You are not logged in. Please 
+                You are not logged in. Please
                 <asp:HyperLink ID="Login" runat="server" NavigateUrl="~/Account/Login">Login</asp:HyperLink>
+                <br />
+                If you are not registered, Please
+                <asp:HyperLink ID="Register" runat="server" NavigateUrl="~/Account/Register">Register</asp:HyperLink>
             </p>
         </AnonymousTemplate>
     </asp:LoginView>
-
 </asp:Content>
