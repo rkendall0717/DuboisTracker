@@ -19,6 +19,10 @@
                 </asp:Panel>
 
                 <asp:Panel ID="panel_ddlTask" runat="server" Style="display: none">
+                    <p>
+                        New User? Please
+                <asp:HyperLink ID="Login" runat="server" NavigateUrl="~/Account/Register">Register</asp:HyperLink>
+                    </p>
                     <asp:DropDownList ID="ddl_task" runat="server">
                         <asp:ListItem>View/Update Users</asp:ListItem>
                         <asp:ListItem>View Jobs</asp:ListItem>
@@ -31,7 +35,8 @@
 
                 </asp:Panel>
                 <asp:Panel ID="panel_viewUpdateUsers" runat="server" Style="display: none">
-                    <asp:GridView ID="GridView1" runat="server" Caption="The Following Users Are Registered"></asp:GridView>
+                    <p>The following users are registered: </p>
+                    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                     <br />
                     <asp:Label ID="lbl_deleteUser" runat="server" Text="Delete a User? Enter in a User Name to Delete:" AssociatedControlID="ddl_userToDelete"></asp:Label>
                     <br />
@@ -60,16 +65,13 @@
                 </asp:GridView>
 
                 <asp:SqlDataSource ID="JobInfo" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_infoConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_infoConnectionString.ProviderName %>" SelectCommand="SELECT * FROM jobinfo"></asp:SqlDataSource>
-                <asp:SqlDataSource ID="UserInfo" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_userConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_userConnectionString.ProviderName %>" SelectCommand="SELECT Email from AspNetUsers"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="UserInfo" runat="server" ConnectionString="<%$ ConnectionStrings:db_9e00e3_userConnectionString %>" ProviderName="<%$ ConnectionStrings:db_9e00e3_userConnectionString.ProviderName %>" SelectCommand="SELECT UserName from AspNetUsers"></asp:SqlDataSource>
         </LoggedInTemplate>
         <AnonymousTemplate>
             <br />
             <p>
                 You are not logged in. Please
                 <asp:HyperLink ID="Login" runat="server" NavigateUrl="~/Account/Login">Login</asp:HyperLink>
-                <br />
-                If you are not registered, Please
-                <asp:HyperLink ID="Register" runat="server" NavigateUrl="~/Account/Register">Register</asp:HyperLink>
             </p>
         </AnonymousTemplate>
     </asp:LoginView>
