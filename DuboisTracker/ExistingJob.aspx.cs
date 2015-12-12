@@ -97,21 +97,20 @@ namespace DuboisTracker
                 {
                     Button jobClose = (Button)theRows.FindControl("jobCloseButton");
                     Button editJob = (Button)theRows.FindControl("editButton");
-                    Button clockIn = (Button)theRows.FindControl("clockInButton");
-                    Button clockOut = (Button)theRows.FindControl("clockOutButton");
+                    Button timeCard = (Button)theRows.FindControl("timeCardButton");
                     if (theRows.Cells[6].Text == "0")
                     { //Job is open
                         theRows.Cells[6].Text = "Open";
                         jobClose.Visible = true;
                         editJob.Visible = true;
+                        timeCard.Visible = true;
                     }
                     else
                     { //Job is closed
                         theRows.Cells[6].Text = "Closed";
                         jobClose.Visible = false;
                         editJob.Visible = false;
-                        clockIn.Visible = false;
-                        clockOut.Visible = false;
+                        timeCard.Visible = false;
                     }
                 }
             }
@@ -205,14 +204,170 @@ namespace DuboisTracker
             }
         }
 
+        protected void loadTimeCardTable(object sender, EventArgs e)
+        {
+            //Get row we want to edit
+            GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
+            string jobId = theRow.Cells[0].Text;
+            string jobTitle = theRow.Cells[3].Text;
+
+            //Hide Existing Jobs For Location
+            DataGridView1.Visible = false;
+
+            //Disable DropDown from being edited
+            if (moldProDropDownList.Visible == true)
+                moldProDropDownList.Enabled = false;
+            else if (otrDropDownList.Visible == true)
+                otrDropDownList.Enabled = false;
+            else if (othsDropDownList.Visible == true)
+                othsDropDownList.Enabled = false;
+
+            //Hide Submit Button for Location
+            Button1.Visible = false;
+
+            //Show Time Card Panel
+            timeCardTable.Visible = true;
+            lbl_timeCardTitle.Text = "Time Card for " + jobTitle;
+            lbl_timeCardJobId.Text = jobId;
+
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                string MyCommandText = "SELECT id,jobId,timeIn,timeOut,username FROM timeCard WHERE jobId = " + jobId;
+
+                cmd.CommandText = MyCommandText;
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataSet theData = new DataSet();
+                adapter.Fill(theData);
+                timeCardGridView.DataSource = theData;
+                timeCardGridView.DataBind();
+                timeCardGridView.Visible = true;
+                foreach (GridViewRow theRows in timeCardGridView.Rows)
+                {
+                    Button clockOut = (Button)theRows.FindControl("clockOutButton");
+                    if (theRows.Cells[4].Text == "&nbsp;") //Look at clockOut Cell
+                    { //Can clock out of a job
+                        clockOut.Visible = true;
+                    }
+                    else
+                    { //Time card slot is full
+                        clockOut.Visible = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         protected void clockInJob(object sender, EventArgs e)
         {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
 
+            string jobId = lbl_timeCardJobId.Text;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "INSERT INTO timecard(jobId,timeIn)VALUES(@jobId,@timeIn)";
+                cmd.Parameters.AddWithValue("@jobId", jobId);
+                cmd.Parameters.AddWithValue("@timeIn", DateTime.Now);
+                //cmd.Parameters.AddWithValue("@username",);
+                cmd.ExecuteNonQuery();
+
+                //Load Confirmation Page
+                timeCardTable.Visible = false;
+                confirmationPanel.Visible = true;
+                lbl_confirm.Text = "You clocked in to " + lbl_timeCardTitle.Text.Remove(0, 14) + " at " + DateTime.Now;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
         }
 
         protected void clockOutJob(object sender, EventArgs e)
         {
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            MySqlCommand cmd;
 
+            //Get row we want to edit
+            GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
+            string timeCardId = theRow.Cells[0].Text;
+            string jobId = theRow.Cells[1].Text;
+
+            try
+            {
+                connection.Open();
+                cmd = connection.CreateCommand();
+                cmd.CommandText = "UPDATE timecard SET timeOut = @timeOut WHERE jobId = @jobId AND id = @id";
+                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now);
+                cmd.Parameters.AddWithValue("@jobId", jobId);
+                cmd.Parameters.AddWithValue("@id", timeCardId);
+                cmd.ExecuteNonQuery();
+
+                //Load Confirmation Page
+                timeCardTable.Visible = false;
+                confirmationPanel.Visible = true;
+                lbl_confirm.Text = "You clocked out of " + lbl_timeCardTitle.Text.Remove(0,14) + " at " + DateTime.Now;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        protected void goBack(object sender, EventArgs e)
+        {
+            if (timeCardTable.Visible == true)
+            {
+                timeCardTable.Visible = false;
+            }
+            else if (editJobPanel.Visible == true)
+            {
+                editJobPanel.Visible = false;
+            }
+            
+            //Re-enable DropDown to be edited
+            if (moldProDropDownList.Visible == true)
+                moldProDropDownList.Enabled = true;
+            else if (otrDropDownList.Visible == true)
+                otrDropDownList.Enabled = true;
+            else if (othsDropDownList.Visible == true)
+                othsDropDownList.Enabled = true;
+
+            //Re-enable DataGridView1 & Submit Button
+            DataGridView1.Visible = true;
+            Button1.Visible = true;
         }
 
         protected void closeJob(object sender, EventArgs e)
