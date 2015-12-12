@@ -66,12 +66,12 @@ namespace DuboisTracker
         protected void ViewUpdateUsers()
         {
             ddl_userToDelete.DataSourceID = "UserInfo";
-            ddl_userToDelete.DataTextField = "Email";
-            ddl_userToDelete.DataValueField = "Email";
+            ddl_userToDelete.DataTextField = "UserName";
+            ddl_userToDelete.DataValueField = "UserName";
 
             string strSQLconnection = "Data Source=SQL5007.Smarterasp.net;Initial Catalog=DB_9E00E3_rkendall0717;User Id=DB_9E00E3_rkendall0717_admin;Password=Password1.;";
             SqlConnection sqlConnection = new SqlConnection(strSQLconnection);
-            SqlCommand sqlCommand = new SqlCommand("select Email from AspNetUsers", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select UserName from AspNetUsers", sqlConnection);
 
 
             if (GridView1 != null)
@@ -124,7 +124,7 @@ namespace DuboisTracker
             string strSQLconnection = "Data Source=SQL5007.Smarterasp.net;Initial Catalog=DB_9E00E3_rkendall0717;User Id=DB_9E00E3_rkendall0717_admin;Password=Password1.;";
             SqlConnection sqlConnection = new SqlConnection(strSQLconnection);
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "DELETE FROM AspNetUsers WHERE email= '" + ddl_userToDelete.SelectedValue + "'";
+            cmd.CommandText = "DELETE FROM AspNetUsers WHERE UserName= '" + ddl_userToDelete.SelectedValue + "'";
             cmd.Connection = sqlConnection;
             sqlConnection.Open();
             cmd.ExecuteNonQuery();

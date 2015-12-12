@@ -111,9 +111,6 @@
             <p>
                 You are not logged in. Please
                 <asp:HyperLink ID="Login" runat="server" NavigateUrl="~/Account/Login">Login</asp:HyperLink>
-                <br />
-                If you are not registered, Please
-                <asp:HyperLink ID="Register" runat="server" NavigateUrl="~/Account/Register">Register</asp:HyperLink>
             </p>
         </AnonymousTemplate>
     </asp:LoginView>

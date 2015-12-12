@@ -3,8 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:LoginView ID="LoginView1" runat="server" ClientIDMode="Static">
         <LoggedInTemplate>
-            <p>If you want to Manage, please go to 
-                <asp:HyperLink ID="Admin" runat="server" NavigateUrl="~/Admin">Admin Page</asp:HyperLink></p>
+            <p>
+                If you want to Manage, please go to 
+                <asp:HyperLink ID="Admin" runat="server" NavigateUrl="~/Admin">Admin Page</asp:HyperLink>
+            </p>
             <div class="jumbotron text-center">
                 <div>
                     <h1>Select your company
@@ -40,9 +42,6 @@
             <p>
                 You are not logged in. Please
                 <asp:HyperLink ID="Login" runat="server" NavigateUrl="~/Account/Login">Login</asp:HyperLink>
-                <br />
-                If you are not registered, Please
-                <asp:HyperLink ID="Register" runat="server" NavigateUrl="~/Account/Register">Register</asp:HyperLink>
             </p>
         </AnonymousTemplate>
     </asp:LoginView>
