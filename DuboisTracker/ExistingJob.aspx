@@ -96,4 +96,10 @@
         <asp:Button ID="timeCardGoBack" runat="server" Text="Back" OnClick="goBack" />
     </asp:Panel>
 
+    <asp:Panel ID="confirmationPanel" runat="server" Visible="false">
+        <asp:Label ID="lbl_confirm" runat="server" Text="You clocked in for " />
+        <br />
+        <asp:HyperLink ID="Home" runat="server" NavigateUrl="~">Home</asp:HyperLink>
+    </asp:Panel>
+
     </asp:Content>

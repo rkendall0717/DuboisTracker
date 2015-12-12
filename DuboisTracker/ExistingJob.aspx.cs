@@ -288,7 +288,11 @@ namespace DuboisTracker
                 cmd.Parameters.AddWithValue("@timeIn", DateTime.Now);
                 //cmd.Parameters.AddWithValue("@username",);
                 cmd.ExecuteNonQuery();
-                Page.Response.Redirect(Page.Request.Url.ToString(), true);
+
+                //Load Confirmation Page
+                timeCardTable.Visible = false;
+                confirmationPanel.Visible = true;
+                lbl_confirm.Text = "You clocked in to " + lbl_timeCardTitle.Text.Remove(0, 14) + " at " + DateTime.Now;
             }
             catch (Exception)
             {
@@ -322,6 +326,11 @@ namespace DuboisTracker
                 cmd.Parameters.AddWithValue("@jobId", jobId);
                 cmd.Parameters.AddWithValue("@id", timeCardId);
                 cmd.ExecuteNonQuery();
+
+                //Load Confirmation Page
+                timeCardTable.Visible = false;
+                confirmationPanel.Visible = true;
+                lbl_confirm.Text = "You clocked out of " + lbl_timeCardTitle.Text.Remove(0,14) + " at " + DateTime.Now;
 
             }
             catch (Exception)
