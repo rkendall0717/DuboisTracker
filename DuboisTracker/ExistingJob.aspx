@@ -30,8 +30,7 @@
             <asp:TemplateField HeaderText="Job Controls">
                 <ItemTemplate>
                     <asp:Button ID="editButton" runat="server" Text="Edit" OnClick="editJobDetails"/>
-                    <asp:Button ID="clockInButton" runat="server" Text="Clock In" OnClick="clockInJob" />
-                    <asp:Button ID="clockOutButton" runat="server" Text="Clock Out" OnClick="clockOutJob"/>
+                    <asp:Button ID="timeCardButton" runat="server" Text="Time Card" OnClick="loadTimeCardTable" />
                     <asp:Button ID="jobCloseButton" runat="server" Text="Close Job" OnClick="closeJob"/>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -68,7 +67,33 @@
         <asp:TextBox ID="tb_Materials" runat="server" Width="300px" Height="100px" TextMode="MultiLine"></asp:TextBox> 
         <br />
         <br />
-        <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="submitJobChanges" />
+        <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="submitJobChanges" /> &nbsp
+        <asp:Button ID="editJobGoBack" runat="server" Text="Back" OnClick="goBack" />
+    </asp:Panel>
+
+    <asp:Panel ID="timeCardTable" runat="server" Visible="false">
+        <asp:Label ID="lbl_timeCardTitle" runat="server" Text="Time Card" />
+        <br />
+        <asp:Label ID="lbl_timeCardJobIdLabel" runat="server" Text="Job ID: " />
+        <asp:Label ID="lbl_timeCardJobId" runat="server" Text="tempId" />
+        <br />
+        <asp:GridView ID="timeCardGridView" runat="server" AutoGenerateColumns="False" Visible="False">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="Time Card #" SortExpression="id" />
+                <asp:BoundField DataField="jobId" HeaderText="Job ID" SortExpression="jobId" />
+                <asp:BoundField DataField="username" HeaderText="Username" SortExpression="username" />
+                <asp:BoundField DataField="timeIn" HeaderText="Time In" SortExpression="timeIn" />
+                <asp:BoundField DataField="timeOut" HeaderText="Time Out" SortExpression="timeOut" />
+                <asp:TemplateField HeaderText="Clock Controls">
+                    <ItemTemplate>
+                        <asp:Button ID="clockOutButton" runat="server" Text="Clock Out" OnClick="clockOutJob"/>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <br />
+        <asp:Button ID="newTimeCardEntry" runat="server" Text="New Time Card Entry" OnClick="clockInJob" /> &nbsp
+        <asp:Button ID="timeCardGoBack" runat="server" Text="Back" OnClick="goBack" />
     </asp:Panel>
 
     </asp:Content>
