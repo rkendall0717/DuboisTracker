@@ -19,17 +19,17 @@
                             <div class="col-xs-12 col-sm-12 col-md-4">
                                 <asp:ImageButton ID="MoldPro" runat="server"
                                     ImageUrl="~/Content/Images/MoldProLogo.jpg"
-                                    OnClick="btnNewEntry_Click" Height="300px" Width="300px" Visible="False" Style="outline: 2px outset lightblue;" />
+                                    OnClick="btnNewEntry_Click" Visible="False" Style="outline: 2px outset lightblue; height:auto; max-width:100%;" />
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4">
                                 <asp:ImageButton ID="OTHS" runat="server"
                                     ImageUrl="~/Content/Images/OTHSLogo.png"
-                                    OnClick="btnNewEntry_Click" Height="300px" Width="300px" Visible="False" Style="outline: 2px outset lightblue;" />
+                                    OnClick="btnNewEntry_Click" Visible="False" Style="outline: 2px outset lightblue; height:auto; max-width:100%;" />
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-4">
                                 <asp:ImageButton ID="OTR" runat="server"
                                     ImageUrl="~/Content/Images/OTRLogo.jpg"
-                                    OnClick="btnNewEntry_Click" Height="300px" Width="300px" Visible="False" Style="outline: 2px outset lightblue;" />
+                                    OnClick="btnNewEntry_Click" Visible="False" Style="outline: 2px outset lightblue; height:auto; max-width:100%;" />
                             </div>
                         </div>
                     </div>
