@@ -6,4 +6,7 @@
   <parameter name="db_9e00e3_infoConnectionString-Web.config Connection String" description="db_9e00e3_infoConnectionString Connection String used in web.config by the application to access the database." defaultValue="server=MYSQL5013.Smarterasp.net;user id=9e00e3_info;password=Password1.;database=db_9e00e3_info" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\rkend_000\\Documents\\GitHub\\DuboisTracker\\DuboisTracker\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='db_9e00e3_infoConnectionString']/@connectionString" />
   </parameter>
+  <parameter name="db_9e00e3_userConnectionString-Web.config Connection String" description="db_9e00e3_userConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5007.Smarterasp.net;Initial Catalog=DB_9E00E3_rkendall0717;User Id=DB_9E00E3_rkendall0717_admin;Password=Password1.;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\rkend_000\\Documents\\GitHub\\DuboisTracker\\DuboisTracker\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='db_9e00e3_userConnectionString']/@connectionString" />
+  </parameter>
 </parameters>

@@ -3,7 +3,7 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <h2><%: Title %></h2>
 
     <div class="row">
         <div class="col-md-8">
@@ -17,11 +17,19 @@
                         </p>
                     </asp:PlaceHolder>
                     <div class="form-group">
+<<<<<<< HEAD
                         <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-xs-2 col-sm-2 col-md-2">Email</asp:Label>
                         <div class="col-xs-10 col-sm-10 col-md-10">
                             <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                                 CssClass="text-danger" ErrorMessage="The email field is required." />
+=======
+                        <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">User Name</asp:Label>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
+                                CssClass="text-danger" ErrorMessage="The User Name field is required." />
+>>>>>>> refs/remotes/origin/master
                         </div>
                         <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-xs-2 col-sm-2 col-md-2">Password</asp:Label>
                         <div class="col-xs-10 col-sm-10 col-md-10">
@@ -50,10 +58,14 @@
             </section>
         </div>
 
+<<<<<<< HEAD
         <div class="col-xs-4 col-sm-4 col-md-4 hidden">
+=======
+        <!--<div class="col-md-4">
+>>>>>>> refs/remotes/origin/master
             <section id="socialLoginForm">
                 <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
             </section>
-        </div>
+        </div> -->
     </div>
 </asp:Content>
