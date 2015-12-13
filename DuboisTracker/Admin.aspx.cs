@@ -80,6 +80,7 @@ namespace DuboisTracker
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 GridView1.DataSource = reader;
                 GridView1.DataBind();
+                GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
             sqlConnection.Close();
         }
@@ -105,6 +106,8 @@ namespace DuboisTracker
                     else
                         theRows.Cells[10].Text = "Closed";
                 }
+
+                dgv_jobInfo.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
             catch (Exception)
             {

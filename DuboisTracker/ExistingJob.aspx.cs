@@ -113,6 +113,8 @@ namespace DuboisTracker
                         timeCard.Visible = false;
                     }
                 }
+
+                DataGridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
             catch (Exception)
             {
@@ -159,7 +161,7 @@ namespace DuboisTracker
             tb_lastName.Text = lastName;
             tb_jobTitle.Text = jobTitle;
             tb_jobDetails.Text = jobDetails;
-            tb_Materials.Text = materials;
+            tb_materials.Text = materials;
         }
 
         protected void submitJobChanges(object Sender, EventArgs e)
@@ -188,7 +190,7 @@ namespace DuboisTracker
                 cmd.Parameters.AddWithValue("@jobId", tb_jobId.Text);
                 cmd.Parameters.AddWithValue("@jobTitle", tb_jobTitle.Text);
                 cmd.Parameters.AddWithValue("@jobDetails", tb_jobDetails.Text);
-                cmd.Parameters.AddWithValue("@materials", tb_Materials.Text);
+                cmd.Parameters.AddWithValue("@materials", tb_materials.Text);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
@@ -258,6 +260,8 @@ namespace DuboisTracker
                         clockOut.Visible = false;
                     }
                 }
+
+                timeCardGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
             catch (Exception)
             {
