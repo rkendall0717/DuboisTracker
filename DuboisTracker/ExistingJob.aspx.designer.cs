@@ -130,42 +130,6 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.TextBox tb_jobId;
         
         /// <summary>
-        /// lbl_firstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_firstName;
-        
-        /// <summary>
-        /// tb_firstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_firstName;
-        
-        /// <summary>
-        /// lbl_lastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_lastName;
-        
-        /// <summary>
-        /// tb_lastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_lastName;
-        
-        /// <summary>
         /// lbl_jobTitle control.
         /// </summary>
         /// <remarks>
