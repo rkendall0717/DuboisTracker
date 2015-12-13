@@ -13,6 +13,6 @@
     <br />
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">rkendal5@emich.edu</a><br />
+        <strong>Support:</strong>   <a href="mailto:rkendal5@emich.edu">rkendal5@emich.edu</a><br />
     </address>
 </asp:Content>
