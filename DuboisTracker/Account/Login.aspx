@@ -37,9 +37,6 @@
                         <div class="col-xs-3 col-sm-3 col-md-3">
                             <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-primary" />
                         </div>
-                        <div class="col-xs-10 col-sm-10 col-md-10">
-                            <asp:HyperLink CssClass="btn btn-link" runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
-                        </div>
                     </div>
                 </div>
                 <p>
