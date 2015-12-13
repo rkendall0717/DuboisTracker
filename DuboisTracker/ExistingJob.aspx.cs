@@ -287,14 +287,14 @@ namespace DuboisTracker
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "INSERT INTO timecard(jobId,timeIn,username)VALUES(@jobId,@timeIn,@username)";
                 cmd.Parameters.AddWithValue("@jobId", jobId);
-                cmd.Parameters.AddWithValue("@timeIn", DateTime.Now);
+                cmd.Parameters.AddWithValue("@timeIn", DateTime.Now.Add(new TimeSpan(3,0,0)));
                 cmd.Parameters.AddWithValue("@username", Context.User.Identity.Name);
                 cmd.ExecuteNonQuery();
 
                 //Load Confirmation Page
                 timeCardTable.Visible = false;
                 confirmationPanel.Visible = true;
-                lbl_confirm.Text = "You clocked in to " + lbl_timeCardTitle.Text.Remove(0, 14) + " at " + DateTime.Now;
+                lbl_confirm.Text = "You clocked in to " + lbl_timeCardTitle.Text.Remove(0, 14) + " at " + DateTime.Now.Add(new TimeSpan(3, 0, 0));
             }
             catch (Exception)
             {
@@ -324,7 +324,7 @@ namespace DuboisTracker
                 connection.Open();
                 cmd = connection.CreateCommand();
                 cmd.CommandText = "UPDATE timecard SET timeOut = @timeOut WHERE jobId = @jobId AND id = @id";
-                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now);
+                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now.Add(new TimeSpan(3, 0, 0)));
                 cmd.Parameters.AddWithValue("@jobId", jobId);
                 cmd.Parameters.AddWithValue("@id", timeCardId);
                 cmd.ExecuteNonQuery();
@@ -332,7 +332,7 @@ namespace DuboisTracker
                 //Load Confirmation Page
                 timeCardTable.Visible = false;
                 confirmationPanel.Visible = true;
-                lbl_confirm.Text = "You clocked out of " + lbl_timeCardTitle.Text.Remove(0,14) + " at " + DateTime.Now;
+                lbl_confirm.Text = "You clocked out of " + lbl_timeCardTitle.Text.Remove(0,14) + " at " + DateTime.Now.Add(new TimeSpan(3, 0, 0));
 
             }
             catch (Exception)
@@ -392,7 +392,7 @@ namespace DuboisTracker
                 cmd.Parameters.AddWithValue("@jobComplete", 1);
                 cmd.ExecuteNonQuery();
                 cmd.CommandText = "UPDATE timeCard SET timeOut = @timeOut WHERE timeOut IS NULL";
-                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now);
+                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now.Add(new TimeSpan(3, 0, 0)));
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
