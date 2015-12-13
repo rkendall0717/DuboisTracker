@@ -2,9 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
-    <h3>moldPro LLC <br />
-    Oak Tree Home Services LLC <br />
-    Oak Tree Residential LLC </h3>
+    <ul>
+        <li><h3>moldPro LLC</h3></li>
+        <li><h3>Oak Tree Home Services LLC</h3></li>
+        <li><h3>Oak Tree Residential LLC</h3></li>
+    </ul>
     <br />
     <address>
         <abbr title="Phone">Phone:</abbr>
