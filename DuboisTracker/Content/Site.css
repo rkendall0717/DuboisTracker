@@ -36,3 +36,9 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+.home-logo {
+    max-height: 300px;
+    max-width: 100%;
+    outline: 2px outset lightblue;
+}
