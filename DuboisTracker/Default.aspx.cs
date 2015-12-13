@@ -15,6 +15,7 @@ public partial class _Default : Page
     public static RadioButton rb_existingJob;
     public static RadioButton rb_newJob;
 
+    public static Label lbl_selectCompany;
     public static ImageButton MoldPro;
     public static ImageButton OTR;
     public static ImageButton OTHS;
@@ -24,9 +25,11 @@ public partial class _Default : Page
         rb_existingJob = (RadioButton)LoginView1.FindControl("rb_existingJob");
         rb_newJob = (RadioButton)LoginView1.FindControl("rb_newJob");
 
+        lbl_selectCompany = (Label)LoginView1.FindControl("lbl_selectYourCompany");
         MoldPro = (ImageButton)LoginView1.FindControl("MoldPro");
         OTR = (ImageButton)LoginView1.FindControl("OTR");
         OTHS = (ImageButton)LoginView1.FindControl("OTHS");
+
 
     }
 
@@ -34,12 +37,14 @@ public partial class _Default : Page
     {
         if (rb_existingJob.Checked || rb_newJob.Checked)
         {
+            lbl_selectCompany.Visible = true;
             MoldPro.Visible = true;
             OTR.Visible = true;
             OTHS.Visible = true;
         }
         else
         {
+            lbl_selectCompany.Visible = true;
             MoldPro.Visible = false;
             OTR.Visible = false;
             OTHS.Visible = false;

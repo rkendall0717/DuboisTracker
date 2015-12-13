@@ -6,6 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#149C82" />
     <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
