@@ -139,15 +139,6 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_firstName;
         
         /// <summary>
-        /// lbl_lastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_lastName;
-        
-        /// <summary>
         /// tb_firstName control.
         /// </summary>
         /// <remarks>
@@ -155,6 +146,15 @@ namespace DuboisTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_firstName;
+        
+        /// <summary>
+        /// lbl_lastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_lastName;
         
         /// <summary>
         /// tb_lastName control.
@@ -211,13 +211,13 @@ namespace DuboisTracker {
         protected global::System.Web.UI.WebControls.Label lbl_Materials;
         
         /// <summary>
-        /// tb_Materials control.
+        /// tb_materials control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_Materials;
+        protected global::System.Web.UI.WebControls.TextBox tb_materials;
         
         /// <summary>
         /// btn_submit control.
