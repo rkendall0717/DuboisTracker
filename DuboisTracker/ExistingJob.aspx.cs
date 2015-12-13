@@ -71,7 +71,7 @@ namespace DuboisTracker
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                string MyCommandText = "SELECT jobid, firstname, lastname, jobtitle, jobdetails, materials, jobcomplete FROM JobInfo WHERE address = ";
+                string MyCommandText = "SELECT jobid, jobtitle, jobdetails, materials, jobcomplete FROM JobInfo WHERE address = ";
 
                 if (moldProDropDownList.Visible == true)
                 {
@@ -98,16 +98,16 @@ namespace DuboisTracker
                     Button jobClose = (Button)theRows.FindControl("jobCloseButton");
                     Button editJob = (Button)theRows.FindControl("editButton");
                     Button timeCard = (Button)theRows.FindControl("timeCardButton");
-                    if (theRows.Cells[6].Text == "0")
+                    if (theRows.Cells[4].Text == "0")
                     { //Job is open
-                        theRows.Cells[6].Text = "Open";
+                        theRows.Cells[4].Text = "Open";
                         jobClose.Visible = true;
                         editJob.Visible = true;
                         timeCard.Visible = true;
                     }
                     else
                     { //Job is closed
-                        theRows.Cells[6].Text = "Closed";
+                        theRows.Cells[4].Text = "Closed";
                         jobClose.Visible = false;
                         editJob.Visible = false;
                         timeCard.Visible = false;
@@ -134,11 +134,9 @@ namespace DuboisTracker
             //Get row we want to edit
             GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
             string jobId = theRow.Cells[0].Text;
-            string firstName = theRow.Cells[1].Text;
-            string lastName = theRow.Cells[2].Text;
-            string jobTitle = theRow.Cells[3].Text;
-            string jobDetails = theRow.Cells[4].Text;
-            string materials = theRow.Cells[5].Text;
+            string jobTitle = theRow.Cells[1].Text;
+            string jobDetails = theRow.Cells[2].Text;
+            string materials = theRow.Cells[3].Text;
 
             //Hide Existing Jobs For Location
             DataGridView1.Visible = false;
@@ -157,8 +155,6 @@ namespace DuboisTracker
             //Show Edit Job Panel
             editJobPanel.Visible = true;
             tb_jobId.Text = jobId;
-            tb_firstName.Text = firstName;
-            tb_lastName.Text = lastName;
             tb_jobTitle.Text = jobTitle;
             tb_jobDetails.Text = jobDetails;
             tb_materials.Text = materials;
@@ -211,7 +207,7 @@ namespace DuboisTracker
             //Get row we want to edit
             GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
             string jobId = theRow.Cells[0].Text;
-            string jobTitle = theRow.Cells[3].Text;
+            string jobTitle = theRow.Cells[1].Text;
 
             //Hide Existing Jobs For Location
             DataGridView1.Visible = false;
@@ -239,7 +235,7 @@ namespace DuboisTracker
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                string MyCommandText = "SELECT id,jobId,timeIn,timeOut,username FROM timeCard WHERE jobId = " + jobId;
+                string MyCommandText = "SELECT id,timeIn,timeOut,username FROM timeCard WHERE jobId = " + jobId;
 
                 cmd.CommandText = MyCommandText;
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
@@ -251,7 +247,7 @@ namespace DuboisTracker
                 foreach (GridViewRow theRows in timeCardGridView.Rows)
                 {
                     Button clockOut = (Button)theRows.FindControl("clockOutButton");
-                    if (theRows.Cells[4].Text == "&nbsp;") //Look at clockOut Cell
+                    if (theRows.Cells[3].Text == "&nbsp;" && theRows.Cells[1].Text == Context.User.Identity.Name) //Look at clockOut Cell
                     { //Can clock out of a job
                         clockOut.Visible = true;
                     }
@@ -261,7 +257,9 @@ namespace DuboisTracker
                     }
                 }
 
-                timeCardGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
+                if(timeCardGridView.Rows.Count != 0)
+                    timeCardGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
+                timeCardGridView.Columns[0].Visible = false;
             }
             catch (Exception)
             {
@@ -287,10 +285,10 @@ namespace DuboisTracker
             {
                 connection.Open();
                 cmd = connection.CreateCommand();
-                cmd.CommandText = "INSERT INTO timecard(jobId,timeIn)VALUES(@jobId,@timeIn)";
+                cmd.CommandText = "INSERT INTO timecard(jobId,timeIn,username)VALUES(@jobId,@timeIn,@username)";
                 cmd.Parameters.AddWithValue("@jobId", jobId);
                 cmd.Parameters.AddWithValue("@timeIn", DateTime.Now);
-                //cmd.Parameters.AddWithValue("@username",);
+                cmd.Parameters.AddWithValue("@username", Context.User.Identity.Name);
                 cmd.ExecuteNonQuery();
 
                 //Load Confirmation Page
@@ -319,7 +317,7 @@ namespace DuboisTracker
             //Get row we want to edit
             GridViewRow theRow = (GridViewRow)((Button)sender).NamingContainer;
             string timeCardId = theRow.Cells[0].Text;
-            string jobId = theRow.Cells[1].Text;
+            string jobId = lbl_timeCardJobId.Text;
 
             try
             {
@@ -392,6 +390,9 @@ namespace DuboisTracker
                 cmd.CommandText = "UPDATE JobInfo SET jobComplete = @jobComplete WHERE jobId = @jobId";
                 cmd.Parameters.AddWithValue("@jobId", jobId);
                 cmd.Parameters.AddWithValue("@jobComplete", 1);
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = "UPDATE timeCard SET timeOut = @timeOut WHERE timeOut IS NULL";
+                cmd.Parameters.AddWithValue("@timeOut", DateTime.Now);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
