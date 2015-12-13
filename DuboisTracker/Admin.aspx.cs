@@ -21,6 +21,7 @@ namespace DuboisTracker
         public static GridView GridView1;
         public static TextBox tb_password;
         public static DropDownList ddl_userToDelete;
+        public static DropDownList ddl_locationsToView;
         public static DropDownList ddl_task;
 
 
@@ -33,6 +34,7 @@ namespace DuboisTracker
             GridView1 = (GridView)LoginView1.FindControl("GridView1");
             tb_password = (TextBox)LoginView1.FindControl("tb_password");
             ddl_userToDelete = (DropDownList)LoginView1.FindControl("ddl_userToDelete");
+            ddl_locationsToView = (DropDownList)LoginView1.FindControl("ddl_locationsToView");
             ddl_task = (DropDownList)LoginView1.FindControl("ddl_task");
         }
 

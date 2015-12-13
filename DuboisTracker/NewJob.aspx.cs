@@ -46,10 +46,6 @@ namespace DuboisTracker
             lbl_confirmation.Text = "Job has been successfully submitted. <br/> <br/>";
             lbl_confirmation.Font.Size = 30;
 
-            // set up confirmation label
-            lbl_confirmation.Text = "Job has been successfully submitted. <br/> <br/>";
-            lbl_confirmation.Font.Size = 30;
-
             // set up reload hyperlink 
             reload.Text = "Return to Home";
             reload.NavigateUrl = "~/Default.aspx";
