@@ -10,7 +10,7 @@
                         <div class="col-xs-12 col-sm-3 col-md-3">
                             <asp:Label ID="lbl_Company" runat="server" Text="Company" AssociatedControlID="tb_company"></asp:Label>
                             <asp:TextBox ID="tb_company" runat="server" ReadOnly="True" Enabled="False" CssClass="form-control"></asp:TextBox>
-                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-md-3">
@@ -63,55 +63,58 @@
                         </div>
                     </div>
                     <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="btnSubmit_Clicked" CssClass="btn btn-primary" />
+                    <br />
+                    <br />
                     <div id="mapholder"></div>
                 </asp:Panel>
+                <script>
+                    var x = document.getElementById('<%= tb_location.ClientID %>');
+                    getLocation();
+                    function getLocation() {
+
+                        x.readOnly = "true";
+                        x.Enabled = "false";
+
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(showPosition, showError);
+                        } else {
+                            x.value = "Geolocation is not supported by this browser.";
+                        }
+                    }
+
+                    function showPosition(position) {
+                        x.value = position.coords.latitude + "\n" +
+                        position.coords.longitude;
+                        navigator.geolocation.getCurrentPosition(showPositionMap, showError);
+                    }
+
+                    function showPositionMap(position) {
+                        var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+                        var img_url = "https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=&markers=color:blue%7Clabel:S%7C"
+                        + latlon + "&zoom=18&size=400x300&sensor=false";
+                        document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
+                    }
+
+                    function showError(error) {
+                        switch (error.code) {
+                            case error.PERMISSION_DENIED:
+                                x.value = "User denied the request for Geolocation."
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                x.value = "Location information is unavailable."
+                                break;
+                            case error.TIMEOUT:
+                                x.value = "The request to get user location timed out."
+                                break;
+                            case error.UNKNOWN_ERROR:
+                                x.value = "An unknown error occurred."
+                                break;
+                        }
+                    }
+                </script>
             </div>
-            <script>
-                var x = document.getElementById('<%= tb_location.ClientID %>');
-                getLocation();
-                function getLocation() {
 
-                    x.readOnly = "true";
-                    x.Enabled = "false";
-
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition, showError);
-                    } else {
-                        x.value = "Geolocation is not supported by this browser.";
-                    }
-                }
-
-                function showPosition(position) {
-                    x.value = position.coords.latitude + "\n" +
-                    position.coords.longitude;
-                    navigator.geolocation.getCurrentPosition(showPositionMap, showError);
-                }
-
-                function showPositionMap(position) {
-                    var latlon = position.coords.latitude + "," + position.coords.longitude;
-
-                    var img_url = "https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=&markers=color:blue%7Clabel:S%7C"
-                    + latlon + "&zoom=18&size=400x300&sensor=false";
-                    document.getElementById("mapholder").innerHTML = "<img src='" + img_url + "'>";
-                }
-
-                function showError(error) {
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            x.value = "User denied the request for Geolocation."
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            x.value = "Location information is unavailable."
-                            break;
-                        case error.TIMEOUT:
-                            x.value = "The request to get user location timed out."
-                            break;
-                        case error.UNKNOWN_ERROR:
-                            x.value = "An unknown error occurred."
-                            break;
-                    }
-                }
-            </script>
         </LoggedInTemplate>
         <AnonymousTemplate>
             <br />

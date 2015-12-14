@@ -10,7 +10,11 @@
                         <div class="col-xs-12 col-sm-3 col-md-3">
                             <asp:Label ID="lbl_Company" runat="server" Text="Company" AssociatedControlID="tb_company"></asp:Label>
                             <asp:TextBox ID="tb_company" runat="server" ReadOnly="True" Enabled="False" CssClass="form-control"></asp:TextBox>
+<<<<<<< HEAD
+                        </div>
+=======
                             </div>
+>>>>>>> refs/remotes/origin/master
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-md-3">
@@ -63,6 +67,11 @@
                         </div>
                     </div>
                     <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="btnSubmit_Clicked" CssClass="btn btn-primary" />
+<<<<<<< HEAD
+                </asp:Panel>
+            </div>
+
+=======
                     <div id="mapholder"></div>
                 </asp:Panel>
             </div>
@@ -112,6 +121,7 @@
                     }
                 }
             </script>
+>>>>>>> refs/remotes/origin/master
         </LoggedInTemplate>
         <AnonymousTemplate>
             <br />
