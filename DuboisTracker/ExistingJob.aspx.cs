@@ -250,10 +250,12 @@ namespace DuboisTracker
                     if (theRows.Cells[3].Text == "&nbsp;" && theRows.Cells[1].Text == Context.User.Identity.Name) //Look at clockOut Cell
                     { //Can clock out of a job
                         clockOut.Visible = true;
+                        theRows.Visible = true;
                     }
                     else
                     { //Time card slot is full
                         clockOut.Visible = false;
+                        theRows.Visible = false;
                     }
                 }
 
